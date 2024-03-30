@@ -2,21 +2,26 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>HTSM Testing generator</title>
+    <title>HTSM Testing Documentor</title>
     <link rel="stylesheet" href="css/site.css" />
 </head>
 <body>
-    <h1>HTSM Testing generator</h1>
+    <h1>HTSM Testing Documentor</h1>
 
     <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
         <input type="text" id="add-name" placeholder="New Test Idea">
         <input type="submit" value="Add Test Idea">
     </form>
-    <br />
-    <form action="javascript:void(0);" method="POST" onsubmit="_generateTestIdea()">
-        <input type="submit" value="Generate Coverage Parameters">
+    <form action="javascript:void(0);" method="POST" onsubmit="addItem2()">
+        <input type="text" id="add-name2" placeholder="Project Environment Task">
+        <input type="submit" value="Add Project Environment Task">
     </form>
     <br />
+    <form action="javascript:void(0);" method="GET" onsubmit="_generateTestIdea()">
+        <input type="submit" value="Generate Coverage Parameters">
+    </form>
+    <div id="coverageParameters"></div>
+
     <div id="editForm">
         <h3>Edit</h3>
         <form action="javascript:void(0);" onsubmit="updateItem()">
@@ -28,20 +33,42 @@
         </form>
     </div>
 
+    <div id="editForm2">
+        <h3>Edit</h3>
+        <form action="javascript:void(0);" onsubmit="updateItem2()">
+            <input type="hidden" id="edit-id2">
+            <input type="checkbox" id="edit-isComplete2">
+            <input type="text" id="edit-name2">
+            <input type="submit" value="Save">
+            <a onclick="closeInput2()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>
+
 
     <table>
         <tr>
             <th>Done?</th>
-            <th>Test Idea</th>
+            <th>Test Ideas</th>
             <th></th>
             <th></th>
         </tr>
         <tbody id="todos"></tbody>
     </table>
 
+    <table>
+        <tr>
+            <th>Done?</th>
+            <th>Project Environment Tasks</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody id="todos2"></tbody>
+    </table>
+
     <script src="js/site.js" asp-append-version="true"></script>
     <script type="text/javascript">
         getItems();
+        getItems2();
     </script>
 
     <p>
